@@ -9,7 +9,7 @@ int main()
     cin >> name;
 
     Player* player = new Player(name);
-    Monster* monster = nullptr;
+    Character* monster = nullptr;
     system("cls");
 
     while (1)

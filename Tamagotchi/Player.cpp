@@ -3,8 +3,9 @@
 
 Player::Player(string _name) : name(_name)
 {
+	hp = 100;
 	damage = 8.0;
-	skill = 1.5 * this->damage;
+	skill = 1.5 * damage;
 }
 
 Player::~Player()
@@ -20,10 +21,7 @@ void Player::initStatus()
 
 void Player::printStatus()
 {
-	cout << "==============================" << endl;
-	cout << "  이름 : " << name << endl;
-	cout << "  체력 : " << hp << endl;
-	cout << "  레벨 : " << level << endl;
+	Character::printStatus();
 	cout << "청결도 : " << cleanliness << endl;
 	cout << "포만감 : " << satiety << endl;
 	cout << "경험치 : " << exp << endl;
@@ -63,29 +61,14 @@ void Player::Training()
 
 void Player::Attack(Character* _enemy)
 {
-	int input = 0;
-	cout << "1. 기본공격  2. 스킬공격" << endl;
-	cin >> input;
-	switch (input)
-	{
-	case 1:		// 기본 공격
-		cout << name << "의 기본 공격 !" << endl;
-		_enemy->getAttack(damage);
-		break;
-	case 2:		// 스킬 공격
-		cout << name << "의 스킬 공격 !" << endl;
-		_enemy->getAttack(skill);
-		break;
-	}
+	Character::Attack(_enemy);
 	Sleep(1000);
 }
 
 void Player::getAttack(double& damage)
 {
-	cout << name << "이(가) " << damage << "의 데미지를 받았다!" << endl;
-	hp -= damage;
-	if (hp <= 0)
-		hp = 0;
+	Character::getAttack(damage);
+	checkStatus();
 }
 
 bool Player::checkStatus()
