@@ -19,10 +19,11 @@ public:
 
 	void initStatus();
 
-	void printStatus();
+	void printStatus() override;
 
 	void Attack(Character* _enemy);
-	void getAttack(double& damage);
+	void skillAttack(Character* _enemy) override;
+	void getAttack(double& damage) override;
 
 	bool checkStatus();
 	void winEXP(double _exp);

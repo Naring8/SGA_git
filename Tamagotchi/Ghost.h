@@ -5,10 +5,10 @@ public:
 	Ghost();
 	~Ghost();
 
-	void printStatus();
-	void Attack(Character* _player);
-	void getAttack(double& damage);
-	bool checkStatus();
+	void skillAttack(Character* _player) override;
+	//void getAttack(double& damage) override;
+
+	bool checkStatus() override;
 
 private:
 	double heal;

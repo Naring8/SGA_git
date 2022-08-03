@@ -4,6 +4,8 @@
 #include <Windows.h>
 #include <conio.h>
 
+#define ONE_SECOND    1000
+#define TWO_SECONDS   2000
 #define THREE_SECONDS 3000
 
 using namespace std;
@@ -16,5 +18,6 @@ using namespace std;
 #include "Ghost.h"
 #include "Dragon.h"
 
+#include "GameObject.h"
 
 void Clear();

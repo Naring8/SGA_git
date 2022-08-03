@@ -15,36 +15,12 @@ Dragon::~Dragon()
 {
 }
 
-void Dragon::printStatus()
+void Dragon::skillAttack(Character* _player)
 {
-	cout << "==============================" << endl;
-	cout << "  이름 : " << name << endl;
-	cout << "  레벨 : " << level << endl;
-	cout << "  체력 : " << hp << endl;
-	cout << "==============================" << endl;
-}
+	cout << name << "의 스킬 공격 !" << endl;
+	_player->getAttack(dragon_breath);
 
-void Dragon::Attack(Character* _player)
-{
-	if (rand() % 4 == 0)
-	{
-		cout << name << "의 브레스 공격!" << endl;
-		_player->getAttack(dragon_breath);
-	}
-	else
-	{
-		cout << name << "의 기본 공격!" << endl;
-		_player->getAttack(damage);
-	}
-	Sleep(1000);
-}
-
-void Dragon::getAttack(double& damage)
-{
-	hp -= damage;
-	cout << name << "에게 " << damage << "의 데미지를 입혔다!" << endl;
-	if (hp <= 0)
-		hp = 0;
+	Sleep(ONE_SECOND);
 }
 
 bool Dragon::checkStatus()

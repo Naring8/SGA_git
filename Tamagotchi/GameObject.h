@@ -5,6 +5,12 @@ public:
 	GameObject();
 	~GameObject();
 
-private:
+	void setPlayerName();
+	void playerAct();
+	void selectMonster();
+	void Battle();
 
+private:
+	Player* player = nullptr;
+	Monster* monster = nullptr;
 };

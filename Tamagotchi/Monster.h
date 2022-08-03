@@ -2,12 +2,14 @@
 class Monster : public Character
 {
 protected:
-
+	double maxHP = 0;
 public:
 	Monster();
 	~Monster();
-	virtual void printStatus();
-	virtual void Attack(Character* _player) = 0;
-	virtual void getAttack(double& damage) = 0;
-	virtual bool checkStatus() = 0;
+
+	void printStatus() override;
+
+	virtual void Attack(Player* _player);
+	virtual void getAttack(int& damage);
+	virtual bool checkStatus();
 };

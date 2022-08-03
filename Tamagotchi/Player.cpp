@@ -1,8 +1,9 @@
 #include "Framework.h"
 #include "Player.h"
 
-Player::Player(string _name) : name(_name)
+Player::Player(string _name)
 {
+	name = _name;
 	hp = 100;
 	damage = 8.0;
 	skill = 1.5 * damage;
@@ -21,7 +22,11 @@ void Player::initStatus()
 
 void Player::printStatus()
 {
-	Character::printStatus();
+	cout << "====================================" << endl;
+	cout << "  이름 : " << name << endl;
+	cout << "  체력 : " << hp << endl;
+	cout << "  레벨 : " << level << endl;
+	cout << "데미지 : " << damage << endl;
 	cout << "청결도 : " << cleanliness << endl;
 	cout << "포만감 : " << satiety << endl;
 	cout << "경험치 : " << exp << endl;
@@ -61,8 +66,18 @@ void Player::Training()
 
 void Player::Attack(Character* _enemy)
 {
-	Character::Attack(_enemy);
-	Sleep(1000);
+	cout << name << "의 기본 공격 !" << endl;
+	_enemy->getAttack(damage);
+
+	Sleep(ONE_SECOND);
+}
+
+void Player::skillAttack(Character* _enemy)
+{
+	cout << name << "의 스킬 공격 !" << endl;
+	_enemy->getAttack(skill);
+
+	Sleep(ONE_SECOND);
 }
 
 void Player::getAttack(double& damage)
@@ -79,7 +94,7 @@ bool Player::checkStatus()
 	else if (hp <= 0)
 	{
 		hp = 0;
-		cout << name <<"이(가) 사망했습니다..." << endl;
+		cout << name << "이(가) 사망했습니다..." << endl;
 		return true;
 	}
 
@@ -89,7 +104,7 @@ bool Player::checkStatus()
 	else if (cleanliness <= 0)
 	{
 		cleanliness = 0;
-		cout << name <<"이(가) 병에 걸려 사망했습니다..." << endl;
+		cout << name << "이(가) 병에 걸려 사망했습니다..." << endl;
 		return true;
 	}
 
@@ -117,6 +132,11 @@ void Player::winEXP(double _exp)
 	exp += _exp;
 }
 
+void Player::printScore()
+{
+	printf("%2d전 %2d승 %2d패", cntWin + cntLose, cntWin, cntLose);
+}
+
 void Player::playerWin()
 {
 	cntWin++;
@@ -127,9 +147,6 @@ void Player::playerLose()
 {
 	cntLose++;
 	printScore();
+	initStatus();
 }
 
-void Player::printScore()
-{
-	printf("%2d전 %2d승 %2d패", cntWin + cntLose, cntWin, cntLose);
-}

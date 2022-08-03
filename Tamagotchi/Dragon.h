@@ -5,14 +5,10 @@ public:
 	Dragon();
 	~Dragon();
 
-	void printStatus();
-	void Attack(Character* _player);
-	void getAttack(double& damage);
-	bool checkStatus();
+	void skillAttack(Character* _player) override;
+
+	bool checkStatus() override;
 
 private:
 	double dragon_breath;
 };
-
-
-

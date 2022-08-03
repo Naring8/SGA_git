@@ -13,12 +13,11 @@ public:
 	Character();
 	~Character();
 
-	virtual void printStatus();
+	virtual void printStatus() = 0;
 
-	virtual void Attack(Character* _enemy);
+	virtual void skillAttack(Character* _enemy) = 0;
 	virtual void getAttack(double& damage);
 
-	virtual bool checkStatus();
 
 	string getName() { return name; }
 	double getdamage() { return damage; }
