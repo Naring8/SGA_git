@@ -99,6 +99,35 @@ Arrow returnState()
 	}
 }
 
+void Move(int arr[SIZE][SIZE])
+{
+	if (LEFT)
+	{
+		if ((point.y) - 1 < 0)
+			return;
+		Swap(arr[point.x][point.y], arr[point.x][(point.y) - 1]);
+	}
+	if (RIGHT)
+	{
+		if ((point.y) + 1 > 3)
+			return;
+		Swap(arr[point.x][point.y], arr[point.x][(point.y) + 1]);
+	}
+	if (UP)
+	{
+		if ((point.x) - 1 < 0)
+			return;
+		Swap(arr[point.x][point.y], arr[(point.x) - 1][point.y]);
+	}
+	if (DOWN)
+	{
+		if ((point.x) + 1 > 3)
+			return;
+		Swap(arr[point.x][point.y], arr[(point.x) + 1][point.y]);
+	}
+}
+
+
 int main()
 {
 	int same = 0;
@@ -126,7 +155,6 @@ int main()
 
 	//SetPuzzle - 랜덤으로 위치 변경
 	for (int i = 0; i < 100; i++)
-		Swap(myArr[rand() % 4][rand() % 4], myArr[rand() % 4][rand() % 4]);
 		
 	
 	PrintArr(myArr);
@@ -140,24 +168,16 @@ int main()
 		switch (state)
 		{
 		case LEFT:
-			if ((point.y) - 1 < 0)
-				break;
-			Swap(myArr[point.x][point.y], myArr[point.x][(point.y) - 1]);
+			Move(myArr);
 			break;
 		case RIGHT:
-			if ((point.y) + 1 > 3)
-				break;
-			Swap(myArr[point.x][point.y], myArr[point.x][(point.y) + 1]);
+			Move(myArr);
 			break;
 		case UP:
-			if ((point.x) - 1 < 0)
-				break;
-			Swap(myArr[point.x][point.y], myArr[(point.x) - 1][point.y]);
+			Move(myArr);
 			break;
 		case DOWN:
-			if ((point.x) + 1 > 3)
-				break;
-			Swap(myArr[point.x][point.y], myArr[(point.x) + 1][point.y]);
+			Move(myArr);
 			break;
 		}
 
